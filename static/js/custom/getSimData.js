@@ -78,6 +78,11 @@ let rudder_trim_pct;
 let flaps_handle_pct;
 let flaps_handle_pct_reversed;
 
+let eng_throttle_lever_position;
+let flaps_handle_index;
+let flaps_num_handle_positions;
+let spoilers_handle_position;
+
 let cabin_seatbelts_alert_switch;
 let cabin_no_smoking_alert_switch;
 
@@ -683,6 +688,11 @@ function getSimulatorData() {
 		landing_vs3 = data.LANDING_VS3;
 		landing_t3 = data.LANDING_T3;
 		sim_rate = data.SIMULATION_RATE;
+
+		eng_throttle_lever_position = data.ENG_THROTTLE_LEVER_POSITION;
+		flaps_handle_index = data.FLAPS_HANDLE_INDEX;
+		flaps_num_handle_positions = data.FLAPS_NUM_HANDLE_POSITIONS;
+		spoilers_handle_position = data.SPOILERS_HANDLE_POSITION;
     });
     return false;
 }
@@ -731,6 +741,11 @@ function displayData() {
 	$("#a320-heading-lock-dir").attr('placeholder', autopilot_heading_lock_dir);
 	$("#a320-altitude-lock-var").attr('placeholder', autopilot_altitude_lock_var);
 	$("#a320-vertical-hold-var").attr('placeholder', autopilot_vertical_hold_var);
+
+	$("#a320-throttle").val(eng_throttle_lever_position * 164);
+	$("#a320-flaps").val(flaps_handle_index * 16400 / flaps_num_handle_positions);
+	$("#a320-flaps").attr('step', 16400 / flaps_num_handle_positions);
+	$("#a320-spoilers").val(spoilers_handle_position * 16400);
 	
 	//NAV Swap
 	$("#ADF_heading").attr('placeholder', adf_card_deg);

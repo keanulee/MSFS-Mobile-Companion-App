@@ -233,21 +233,49 @@
 								</tr>
 							</table>
 							
-							<p style="margin-top:16px;margin-bottom:4px">Throttle</p>
-							<table>
-								<tr>
-									<td>
-										<button type="button" onclick="triggerSimEvent('THROTTLE_SET', -16384); $(this).blur();" class="btn btn-danger" style="width:139px;padding-left:0px;padding-right:0px" title="Reverse throttle">REVERSE</button>
-										<button type="button" onclick="triggerSimEvent('THROTTLE_SET', 0); $(this).blur();" class="btn btn-primary" style="width:139px;padding-left:0px;padding-right:0px" title="Reverse throttle">IDLE</button>
-									</td>
-								</tr>
-							</table>
-							
 							<p style="margin-top:16px;margin-bottom:4px">Barometer</p>
 							<table>
 								<tr>
 									<td>
 										<button type="button" onclick="triggerSimEvent('BAROMETRIC'); $(this).blur();" class="btn btn-warning" style="width:139px;padding-left:0px;padding-right:0px" title="Sync altimeter setting">Sync</button>
+									</td>
+								</tr>
+							</table>
+							
+							<p style="margin-top:16px;margin-bottom:4px">Throttle</p>
+							<table>
+								<tr>
+									<td>
+										<input id="a320-throttle" type="range" onchange="triggerSimEvent('THROTTLE_SET', this.value);" min="0" max="16400" step="164" style="width:282px">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" onclick="triggerSimEvent('THROTTLE_SET', -16384); $(this).blur();" class="btn btn-danger" style="width:139px;padding-left:0px;padding-right:0px" title="Reverse throttle">Reverse</button>
+										<button type="button" onclick="triggerSimEvent('THROTTLE_SET', 0); $(this).blur();" class="btn btn-primary" style="width:139px;padding-left:0px;padding-right:0px" title="Reverse throttle">Idle</button>
+									</td>
+								</tr>
+							</table>
+							
+							<p style="margin-top:16px;margin-bottom:4px">Flaps</p>
+							<table>
+								<tr>
+									<td>
+										<input id="a320-flaps" type="range" onchange="triggerSimEvent('FLAPS_SET', this.value);" min="0" max="16400" step="4100" style="width:282px">
+									</td>
+								</tr>
+							</table>
+							
+							<p style="margin-top:16px;margin-bottom:4px">Spoilers</p>
+							<table>
+								<tr>
+									<td>
+										<input id="a320-spoilers" type="range" onchange="triggerSimEvent('SPOILERS_ARM_OFF'); triggerSimEvent('SPOILERS_SET', this.value);" min="0" max="16400" step="164" style="width:282px">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<button type="button" onclick="triggerSimEvent('SPOILERS_SET', 0); triggerSimEvent('SPOILERS_ARM_ON'); $(this).blur();" class="btn btn-danger" style="width:139px;padding-left:0px;padding-right:0px" title="Arm auto-spoiler">Arm</button>
 									</td>
 								</tr>
 							</table>

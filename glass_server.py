@@ -295,6 +295,12 @@ def simconnect_thread_func(threadname):
             except:
                 pass
         
+        # Throttle, flaps, and spoilers
+        ui_friendly_dictionary["ENG_THROTTLE_LEVER_POSITION"] = await aq.get("GENERAL_ENG_THROTTLE_LEVER_POSITION:1")
+        ui_friendly_dictionary["FLAPS_HANDLE_INDEX"] = await aq.get("FLAPS_HANDLE_INDEX")
+        ui_friendly_dictionary["FLAPS_NUM_HANDLE_POSITIONS"] = await aq.get("FLAPS_NUM_HANDLE_POSITIONS")
+        ui_friendly_dictionary["SPOILERS_HANDLE_POSITION"] = await aq.get("SPOILERS_HANDLE_POSITION")
+        
         # LOC and APPR Mode
         try:
             if (ui_friendly_dictionary["AUTOPILOT_APPROACH_HOLD"] == 1 and ui_friendly_dictionary["AUTOPILOT_GLIDESLOPE_HOLD"] == 1):
